@@ -8,6 +8,8 @@
         <p>Course Enrolments: None</p>
       </div>
     </div>
-    <%= link_to '<i class="material-icons right">create</i>Edit your profile'.html_safe, edit_student_path(@student),class: "waves-effect waves-light btn-large" %>
+    <% if current_user == @student %>
+     <%= link_to '<i class="material-icons right">create</i>Edit your profile'.html_safe, edit_student_path(@student),class: "waves-effect waves-light btn-large" %>
+    <% end %>
   </div>
 </div>
