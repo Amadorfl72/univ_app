@@ -5,7 +5,18 @@
         <span class="card-title">Name: <%= @student.name%></span>
         <p>Email: <%= @student.email%></p>
         <p>Since: <%=@student.created_at %></p>
-        <p>Course Enrolments: None</p>
+        <br>
+        <p class="underline">Course Enrolments: 
+          <% if @student.courses.empty? %>
+            None
+          <% else %> 
+          <ul>
+            <% @student.courses.each do |course| %>
+             <li> - <%= course.name %></li>
+            <% end %>
+          </ul>
+          <%end %>
+        </p>
       </div>
     </div>
     <% if current_user == @student %>
