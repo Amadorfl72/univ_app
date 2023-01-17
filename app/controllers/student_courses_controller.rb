@@ -13,5 +13,12 @@ class StudentCoursesController < ApplicationController
 
   end
 
+  def destroy
+    course_to_remove=StudentCourse.where(course: params[:course_id],student: current_user)
+    #byebug
+    StudentCourse.destroy(course_to_remove[0].id) 
+    redirect_to root_path
+  end
+
 
 end
