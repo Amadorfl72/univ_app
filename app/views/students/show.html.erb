@@ -12,7 +12,7 @@
           <% else %> 
           <ul>
             <% @student.courses.each do |course| %>
-             <li> - <%= course.name %> <%=link_to '<i class="material-icons red-text">remove_circle</i>'.html_safe, course_drop_path(course_id: course.id), class: "material-icons", method: :delete %></li>
+            <li> - <%= course.name %>&nbsp;&nbsp;&nbsp;&nbsp;<%=link_to "Leave", course_drop_path(course_id: course.id), class: "waves-effect waves-light btn leave", method: :delete %></li>
             <% end %>
           </ul>
           <%end %>

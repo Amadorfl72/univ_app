@@ -33,3 +33,13 @@ footer{
 .underline{
   text-decoration: underline;
 }
+
+.leave{
+  height: 18px;
+  line-height: 18px;
+  background-color: indianred;
+}
+
+.leave:hover{
+  background-color: rgb(245, 145, 145);
+}
