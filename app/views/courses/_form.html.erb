@@ -1,0 +1,54 @@
+<%= render 'shared/errors', obj: @course %>
+
+<div class="container">
+  <div class="row center sign-up-form">
+    <div class="col s12 m12 l12">
+      <div class="card-panel">
+        <h3 class="header"><%=  @course.new_record? ? "New Course" : "Edit Course" %></h3>
+        <div class="row">
+          <%= form_for(@course,html: {class: "col s12"}) do |f| %>
+          <div class="row"> 
+            <div class="input-field col s12">
+              <%= f.text_field :short_name, placeholder: "Enter a short name", autofocus: true%>  
+              <!--<%= f.label :name, class: "Active" %>-->
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="input-field col s12">
+              <%= f.text_field :name, placeholder: "Enter a name", autofocus: true%>  
+              <!--<%= f.label :name, class: "Active" %>-->
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.text_field :description, placeholder: "Enter course description" %>
+              <!--<%= f.label :email, class: "Active" %>-->
+            </div>
+          </div>
+          <%= f.hidden_field :mentor_id, :value => current_user.id %>
+        
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.text_field :max_attendants, placeholder: "Enter desired max attendants" %>
+              <!--<%= f.label :role, class: "Active" %>-->
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.datetime_select :session_date, :ampm => false, :minute_step => 15 %>
+            </div>
+          </div>
+
+          
+          <div class="row"> 
+            <div class="input-field col s12"> 
+              <%= f.button(@course.new_record? ? '<i class="material-icons right">fast_forward</i>Create Course'.html_safe : '<i class="material-icons right">fast_forward</i>Submit Changes'.html_safe, class: "btn orange waves-effect waves-light right") %>
+            </div>
+          </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

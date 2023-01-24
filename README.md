@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#TO DO
 
-Things you may want to cover:
+- Modify new course
+- Modify Index courses (only courses in the past)
+- crop description in index
+- Show mentor in courses
+- Add pagination/search in both lists
+- 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

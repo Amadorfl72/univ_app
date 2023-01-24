@@ -10,13 +10,27 @@
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <span class="card-title"><%= course.short_name%> : <%=course.name %></span>
-        <p>When: 21/01/2023 10:00</p>
-        <p><%=course.description %></p>
+        <% if logged_in? && course.mentor_id==current_user.id %>
+          <p>Facilitator: You </p>
+        <% else %>
+          <p>Facilitator: <%=Student.find(course.mentor_id).name %></p>
+        <% end %>
+        <p>When: <%=course.session_date %></p>
+        <p>Max attendants: <%= course.max_attendants %>
+          <%if course.students.count>=course.max_attendants%>
+          (ALL SEATS BOOKED ALREADY!!)
+          <% else %>
+          (<%=course.students.count%> seats already taken)
+          <% end %>
+        </p>
+        <p><i><%=course.description.truncate(100) %></i></p>
       </div>
       <div class="card-action">
         <% if logged_in? %>
           <% if !(current_user.courses.include?(course))%>
-            <%= link_to "Enroll", course_enroll_path(course_id: course.id), method: :post %>
+            <% if course.mentor_id!=current_user.id && course.students.count<course.max_attendants %>
+              <%= link_to "Enroll", course_enroll_path(course_id: course.id), method: :post %>
+            <% end %>
           <%else%>
             <%= link_to "Leave Course", course_drop_path(course_id: course.id), method: :delete %>
           <% end %>   

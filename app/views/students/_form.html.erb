@@ -7,33 +7,62 @@
         <h3 class="header"><%=  @student.new_record? ? "Sign Up" : "Edit Profile" %></h3>
         <div class="row">
           <%= form_for(@student,html: {class: "col s12"}) do |f| %>
-
+          <div class="row"> 
+            <div class="input-field col s4">
+              <%= f.select :is_mentor, options_for_select([["Not yet", "false"], ["Yes!!", "true"]]),{ :selected => @student.is_mentor},class: "radio-button" %>
+            </div>
+          </div>
           <div class="row"> 
             <div class="input-field col s12">
               <%= f.text_field :name, placeholder: "Enter your full name", autofocus: true%>  
-              <%= f.label :name, class: "Active" %>
+              <!--<%= f.label :name, class: "Active" %>-->
             </div>
           </div>
           <div class="row"> 
             <div class="input-field col s12">  
               <%= f.text_field :email, placeholder: "Enter your Email Address" %>
-              <%= f.label :email class: "Active" %>
+              <!--<%= f.label :email, class: "Active" %>-->
             </div>
           </div>
+         
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.text_field :role, placeholder: "Enter your current Role" %>
+              <!--<%= f.label :role, class: "Active" %>-->
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="input-field col s6">  
+              <%= f.text_field :domain, placeholder: "Enter you Domain" %>
+              <!--<%= f.label :domain,class: "Active" %>-->
+            </div>
+            <div class="input-field col s6">  
+              <%= f.text_field :team, placeholder: "Enter your Team" %>
+              <!--<%= f.label :team, class: "Active" %>-->
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.text_field :skills, placeholder: "Enter (w/Comma) the main skills/topics you want to learn/teach about" %>
+              <!--<%= f.label :skills, class: "Active" %>-->
+            </div>
+          </div>
+
           <div class="row"> 
             <div class="input-field col s6">  
               <%= f.password_field :password, placeholder: "Choose a password" %>
-              <%= f.label :password class: "Active" %>
+              <!--<%= f.label :password,class: "Active" %>-->
             </div>
-          
             <div class="input-field col s6">  
               <%= f.password_field :password_confirmation, placeholder: "Confirm your password" %>
-              <%= f.label :password_confirmation class: "Active" %>
+              <!--<%= f.label :password_confirmation, class: "Active" %>-->
             </div>
           </div>
           <div class="row"> 
             <div class="input-field col s12"> 
-              <%= f.button(@student.new_record? ? '<i class="material-icons right">arrow-forward</i>Sign Up'.html_safe : '<i class="material-icons right">arrow-forward</i>Submit Changes'.html_safe, class: "btn orange waves-effect waves-light right") %>
+              <%= f.button(@student.new_record? ? '<i class="material-icons right">fast_forward</i>Sign Up'.html_safe : '<i class="material-icons right">fast_forward</i>Submit Changes'.html_safe, class: "btn orange waves-effect waves-light right") %>
             </div>
           </div>
             <% end %>

@@ -30,6 +30,10 @@ before_action :require_same_student, only: [:edit,:update]
     
   end
 
+  def mentors
+    @students= Student.where(is_mentor: true)
+  end
+
   def update
    
     @student.name=params[:name]
@@ -45,7 +49,7 @@ before_action :require_same_student, only: [:edit,:update]
   private
 
   def student_params
-    params.require(:student).permit(:name,:email,:password,:password_confirmation)
+    params.require(:student).permit(:name,:email,:password,:password_confirmation,:is_mentor,:role,:domain,:team,:skills)
   end
 
   def set_student

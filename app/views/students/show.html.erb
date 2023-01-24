@@ -2,8 +2,13 @@
   <div class="col s6 m6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
-        <span class="card-title">Name: <%= @student.name%></span>
+        <span class="card-title"><%= @student.name%> 
+          <% if @student.is_mentor? %>
+            <%='<i class="material-icons right icon-yellow">gps_fixed</i>'.html_safe %>
+          <% end %>
+        </span>
         <p>Email: <%= @student.email%></p>
+        <p><%=@student.role%> at <%=@student.domain%>::<%=@student.team%></p>
         <p>Since: <%=@student.created_at %></p>
         <br>
         <p class="underline">Course Enrolments: 
