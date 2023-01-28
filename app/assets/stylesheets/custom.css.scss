@@ -44,9 +44,10 @@ footer{
   background-color: rgb(245, 145, 145);
 }
 
-.radio-button{
+.select-mentor{
   opacity: 100 !important;
   border-radius: 5px !important;
+  margin-left: 150px;;
   
 }
 
@@ -66,5 +67,10 @@ i.icon-yellow
 
 select{
   opacity: 100%;
-  width: 18.5%;
+
+}
+
+div .course-detail
+{
+ align-self: start;
 }

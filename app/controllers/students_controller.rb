@@ -4,8 +4,11 @@ skip_before_action :require_user, only: [:new, :create]
 
 before_action :set_student, only: [:show,:edit,:update]
 before_action :require_same_student, only: [:edit,:update]
+  
   def index
-    @students= Student.all
+    #returns students with at least one active course 
+    #@students= Student.joins(:student_courses).where.not(student_courses: {student_id: nil})
+    @students=Student.all
   end
 
   def new
@@ -31,7 +34,7 @@ before_action :require_same_student, only: [:edit,:update]
   end
 
   def mentors
-    @students= Student.where(is_mentor: true)
+    @students= Student.where(is_mentor: false)
   end
 
   def update

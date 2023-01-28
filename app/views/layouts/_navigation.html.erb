@@ -3,12 +3,16 @@
   <li><%= session_link %></li>
   <% if logged_in? %>
     <li><%= link_to "Profile", student_path(current_user) %></li>
+  <% else %>
+    <li><%= link_to "Sign-up", new_student_path %></li>
   <% end %>
   </ul>
   <ul id="dropdown2" class="dropdown-content">
     <li><%= session_link %></li>
     <% if logged_in? %>
       <li><%= link_to "Profile", student_path(current_user) %></li>
+    <% else %>
+      <li><%= link_to "Sign-up", new_student_path %></li>
     <% end %>
   </ul>
   <nav>

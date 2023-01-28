@@ -1,7 +1,7 @@
 <%= render 'shared/errors', obj: @student %>
 
 <div class="container">
-  <div class="row center sign-up-form">
+  <div class="row sign-up-form">
     <div class="col s12 m12 l12">
       <div class="card-panel">
         <h3 class="header"><%=  @student.new_record? ? "Sign Up" : "Edit Profile" %></h3>
@@ -9,7 +9,7 @@
           <%= form_for(@student,html: {class: "col s12"}) do |f| %>
           <div class="row"> 
             <div class="input-field col s4">
-              <%= f.select :is_mentor, options_for_select([["Not yet", "false"], ["Yes!!", "true"]]),{ :selected => @student.is_mentor},class: "radio-button" %>
+              <label>Want to be a Mentor?</label><%= f.select :is_mentor, options_for_select([["Nope, just Mentee", "false"], ["Yes!!", "true"]]),{ :selected => @student.is_mentor},class: "select-mentor" %>
             </div>
           </div>
           <div class="row"> 
