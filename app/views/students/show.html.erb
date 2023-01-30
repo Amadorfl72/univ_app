@@ -11,6 +11,24 @@
         <p><%=@student.role%> at <%=@student.domain%>::<%=@student.team%></p>
         <p>Since: <%=@student.created_at %></p>
         <br>
+        <% if !@student.skills.nil? %>
+          <p>Topics she/he can Mentor: </p>
+          
+              <% @student.skills.split(",").each do |skill| %>
+                <span class="skill">#<%= skill.lstrip %></span> 
+              <% end %>
+
+        <% end %>
+                
+        <% if !@student.interests.nil? %>
+          <p>Topics she/he would like to learn: </p>
+          
+            <% @student.interests.split(",").each do |interest| %>
+            <span class="skill"> #<%= interest.lstrip %></span>
+            <% end %>
+          
+        <% end %>
+        <br>
         <p class="underline">Course Enrolments: 
           <% if @student.courses.empty? %>
             None

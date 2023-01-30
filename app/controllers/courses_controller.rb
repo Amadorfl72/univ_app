@@ -4,8 +4,9 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show,:edit,:update]
 
   def index
-    #@courses=Course.all
-    @courses=Course.where('session_date > ?', DateTime.now)
+    @courses=Course.all
+    puts "Entro en Index"
+    #@courses=Course.where('session_date > ?', DateTime.now)
 
   end
 
@@ -27,6 +28,16 @@ class CoursesController < ApplicationController
     
   end
 
+  def search
+    @courses=Course.where("short_name like :search OR name like :search OR description like :search OR keywords like :search", search: "%#{params[:search]}%")
+    if @courses.count>0
+      render 'index'
+    else
+      flash[:notice]="No matches found with your seach criteria"
+      redirect_to root_path
+    end
+  end
+
   def update
     if @course.update(course_params)
       flash[:notice]="Update Succesfully saved"
@@ -44,10 +55,11 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:short_name,:name,:description,:mentor_id,:max_attendants,:session_date)
+    params.require(:course).permit(:short_name,:name,:description,:mentor_id,:keywords,:max_attendants,:session_date)
   end
 
   def set_course
+    puts "Entro en before action"
     @course=Course.find(params[:id])
   end
 

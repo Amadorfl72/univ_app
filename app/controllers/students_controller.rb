@@ -49,10 +49,20 @@ before_action :require_same_student, only: [:edit,:update]
 
   end
 
+  def search
+    @students=Student.where("name like :search OR skills like :search OR interests like :search", search: "%#{params[:search]}%")
+    if @students.count>0
+      render 'index'
+    else
+      flash[:notice]="No matches found with your seach criteria"
+      redirect_to students_path
+    end
+  end
+
   private
 
   def student_params
-    params.require(:student).permit(:name,:email,:password,:password_confirmation,:is_mentor,:role,:domain,:team,:skills)
+    params.require(:student).permit(:name,:email,:password,:password_confirmation,:is_mentor,:role,:domain,:team,:skills,:interests)
   end
 
   def set_student

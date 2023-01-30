@@ -17,6 +17,12 @@
           <% end %>
         </p>
         <br>
+        <p>Keywords</p>
+        <% if !@course.keywords.nil? %>
+            <%@course.keywords.split(",").each do |keyword| %>
+              <span class="skill">#<%= keyword.lstrip %> </span>
+            <% end %>
+        <% end %>
         <p>What is it about?</p>
         <p><i><%=@course.description %></i></p>
       </div>

@@ -10,19 +10,19 @@
           <div class="row"> 
             <div class="input-field col s12">
               <%= f.text_field :short_name, placeholder: "Enter a short name", autofocus: true%>  
-              <!--<%= f.label :name, class: "Active" %>-->
+              <%= f.label :short_name, class: "active" %>
             </div>
           </div>
           <div class="row"> 
             <div class="input-field col s12">
               <%= f.text_field :name, placeholder: "Enter a name", autofocus: true%>  
-              <!--<%= f.label :name, class: "Active" %>-->
+              <%= f.label :name, class: "active" %>
             </div>
           </div>
           <div class="row"> 
             <div class="input-field col s12">  
-              <%= f.text_field :description, placeholder: "Enter course description" %>
-              <!--<%= f.label :email, class: "Active" %>-->
+              <%= f.text_area :description, placeholder: "Enter course description" %>
+              <%= f.label :description, class: "active" %>
             </div>
           </div>
           <%= f.hidden_field :mentor_id, :value => current_user.id %>
@@ -30,13 +30,21 @@
           <div class="row"> 
             <div class="input-field col s12">  
               <%= f.text_field :max_attendants, placeholder: "Enter desired max attendants" %>
-              <!--<%= f.label :role, class: "Active" %>-->
+              <%= f.label :max_attendants, class: "active" %>
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="input-field col s12">  
+              <%= f.text_field :keywords, placeholder: "Enter between commas the keywords" %>
+              <%= f.label :keywords, class: "active" %>
             </div>
           </div>
 
           <div class="row"> 
             <div class="input-field col s12">  
               <%= f.datetime_select :session_date, :ampm => false, :minute_step => 15 %>
+              <%= f.label :session_date, class: "active" %>
             </div>
           </div>
 

@@ -47,7 +47,8 @@ footer{
 .select-mentor{
   opacity: 100 !important;
   border-radius: 5px !important;
-  margin-left: 150px;;
+  margin-left: 150px;
+  width: 220px;
   
 }
 
@@ -73,4 +74,21 @@ select{
 div .course-detail
 {
  align-self: start;
+}
+
+.skill{
+  background-color:#ffab40 ;
+}
+
+.finder{
+  width: 70% !important;
+}
+
+.finder-box{
+  display:inline-block !important;  
+}
+
+.right-aligned{
+  text-align: right !important;
+  padding-left: 200px !important;
 }

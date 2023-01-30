@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   post 'course_enroll', to: 'student_courses#create'
   delete 'course_drop', to: 'student_courses#destroy'
   get 'mentors', to:'students#mentors'
+  #get '/courses/search', to: 'courses#search', as: 'search_courses'
+  get 'search_courses', to: 'courses#search'
+  get 'search_students', to: 'students#search'
+
 end
 

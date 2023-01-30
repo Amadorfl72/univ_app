@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
   before_action :require_user
-
   helper_method :current_user, :logged_in?
+  
   def current_user
     # ||= only executes the query if @current_user is not already set
     @current_user ||= Student.find(session[:student_id]) if session[:student_id]
