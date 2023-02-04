@@ -23,7 +23,7 @@
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><%=link_to "Courses", root_path %></li>
           <% if logged_in? %>
-           <li><%=link_to "Students", students_path %></li>
+           <li><%=link_to "Members", students_path %></li>
           <% end %>
           <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
             <% if logged_in? %>

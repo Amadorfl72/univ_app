@@ -50,7 +50,11 @@ before_action :require_same_student, only: [:edit,:update]
   end
 
   def search
-    @students=Student.where("name like :search OR skills like :search OR interests like :search", search: "%#{params[:search]}%")
+    if params[:search_scope]=='false'
+      @students=Student.where("name like :search OR skills like :search OR interests like :search", search: "%#{params[:search]}%")
+   else
+      @students=Student.where("name like :search OR skills like :search OR interests like :search", search: "%#{params[:search]}%").where(is_mentor: true)
+   end
     if @students.count>0
       render 'index'
     else
