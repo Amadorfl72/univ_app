@@ -27,7 +27,11 @@
           <% end %>
           <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
             <% if logged_in? %>
-              <%= current_user.name %>
+              <% if is_admin? %>
+                <%= current_user.name %> (admin) 
+              <% else %>
+                <%= current_user.name %>
+              <% end %>
             <% else %>
               Account
             <% end %>

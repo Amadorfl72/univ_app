@@ -11,4 +11,18 @@ class Student < ApplicationRecord
   has_secure_password
   has_many :student_courses
   has_many :courses, through: :student_courses
+
+  before_create :generate_confirmation_token
+
+  def generate_confirmation_token
+    self.confirmation_token = SecureRandom.urlsafe_base64.to_s
+  end
+
+  after_create :send_confirmation_email
+
+  def send_confirmation_email
+    puts 'Send confirmation email'
+    UserMailer.confirmation_email(self).deliver_later
+  end
+
 end

@@ -5,6 +5,8 @@ skip_before_action :require_user, only: [:new, :create]
 before_action :set_student, only: [:show,:edit,:update]
 before_action :require_same_student, only: [:edit,:update]
   
+
+  
   def index
     #returns students with at least one active course 
     #@students= Student.joins(:student_courses).where.not(student_courses: {student_id: nil})
@@ -60,6 +62,27 @@ before_action :require_same_student, only: [:edit,:update]
     else
       flash[:notice]="No matches found with your seach criteria"
       redirect_to students_path
+    end
+  end
+
+  def confirm
+    user = Student.find_by(confirmation_token: params[:token])
+    if user
+      user.update(confirmed: true)
+      redirect_to root_url, notice: "Tu cuenta ha sido confirmada"
+    else
+      redirect_to root_url, alert: "Token inválido"
+    end
+  end
+
+
+  def admin_confirm
+    user = Student.find(params[:id])
+    if user
+      user.update(confirmed: true)
+      redirect_to root_url, notice: "Tu cuenta ha sido confirmada"
+    else
+      redirect_to root_url, alert: "Token inválido"
     end
   end
 
