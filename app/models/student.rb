@@ -1,8 +1,10 @@
 class Student < ApplicationRecord
-  
+
   before_save { self.email=email.downcase }
-  validates :name, presence: true,length:{minimum:5,maximum:50} 
+  validates :name, presence: true,length:{minimum:5,maximum:50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  #VALID_EMAIL_REGEX = /\A[\w+\-.]+@amenitiz\.com\z/i
+
   validates :email,
             presence: true,
             uniqueness: {case_sensitive: false},
@@ -18,11 +20,10 @@ class Student < ApplicationRecord
     self.confirmation_token = SecureRandom.urlsafe_base64.to_s
   end
 
-  after_create :send_confirmation_email
+  #after_create :send_confirmation_email
 
   def send_confirmation_email
     puts 'Send confirmation email'
-    UserMailer.confirmation_email(self).deliver_later
+    UserMailer.confirmation_email(self).deliver
   end
-
 end

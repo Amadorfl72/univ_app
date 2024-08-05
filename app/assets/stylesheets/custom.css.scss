@@ -10,16 +10,16 @@ main {
 }
 
 nav{
-  background-color: #FF355E !important;
+  background-color: #5c8ef1 !important;
 }
 
 footer{
-  background-color: #FF355E !important;
+  background-color: #5c8ef1 !important;
 }
 
 .footer-copyright
 {
-  background-color: #FF355E !important;
+  background-color: #5c8ef1 !important;
 }
 
 .sign-up-form{
@@ -49,7 +49,7 @@ footer{
   border-radius: 5px !important;
   margin-left: 150px;
   width: 220px;
-  
+
 }
 
 .row{
@@ -63,7 +63,19 @@ i.icon-yellow
 
 .card .card-title{
   font-size: 20px !important;
-  color: #ffab40;
+  font-weight: bolder;
+  color: navy;
+}
+
+.card .card-content 
+{
+  background-color: khaki !important;
+  color:black !important;
+}
+
+.card .card-action 
+{
+  background-color: seagreen !important;
 }
 
 select{
@@ -82,14 +94,18 @@ div .course-detail
 }
 
 .finder{
-  width: 70% !important;
+  width: 100% !important;
 }
 
 .finder-box{
-  display:inline-block !important;  
+  display:inline-block !important;
 }
 
 .right-aligned{
   text-align: right !important;
-  padding-left: 200px !important;
+}
+
+.delete{
+  color: rgb(219, 115, 115) !important;
+  text-align: right !important;
 }

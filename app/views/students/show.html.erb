@@ -2,7 +2,7 @@
   <div class="col s6 m6">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
-        <span class="card-title"><%= @student.name%> 
+        <span class="card-title"><%= @student.name%>
           <% if @student.is_mentor? %>
             <%='<i class="material-icons right icon-yellow">gps_fixed</i>'.html_safe %>
           <% end %>
@@ -13,26 +13,26 @@
         <br>
         <% if !@student.skills.nil? %>
           <p>Topics she/he can Mentor: </p>
-          
+
               <% @student.skills.split(",").each do |skill| %>
-                <span class="skill">#<%= skill.lstrip %></span> 
+                <span class="skill">#<%= skill.lstrip %></span>
               <% end %>
 
         <% end %>
-                
+
         <% if !@student.interests.nil? %>
           <p>Topics she/he would like to learn: </p>
-          
+
             <% @student.interests.split(",").each do |interest| %>
             <span class="skill"> #<%= interest.lstrip %></span>
             <% end %>
-          
+
         <% end %>
         <br>
-        <p class="underline">Course Enrolments: 
+        <p class="underline">Course Enrolments:
           <% if @student.courses.empty? %>
             None
-          <% else %> 
+          <% else %>
           <ul>
             <% @student.courses.each do |course| %>
             <li> - <%= course.name %>&nbsp;&nbsp;&nbsp;&nbsp;<%=link_to "Leave", course_drop_path(course_id: course.id), class: "waves-effect waves-light btn leave", method: :delete %></li>
@@ -42,8 +42,8 @@
         </p>
       </div>
     </div>
-    <% if current_user == @student %>
-     <%= link_to '<i class="material-icons right">create</i>Edit your profile'.html_safe, edit_student_path(@student),class: "waves-effect waves-light btn-large" %>
+    <% if current_user == @student || is_admin? %>
+     <%= link_to '<i class="material-icons right">create</i>Edit profile'.html_safe, edit_student_path(@student),class: "waves-effect waves-light btn-large" %>
     <% end %>
   </div>
 </div>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'search_courses', to: 'courses#search'
   get 'search_students', to: 'students#search'
   get "/students/confirm/:token", to: "students#confirm", as: "confirm_user"
-
+  get '/students/admin_confirm/:id', to: "students#admin_confirm", as: "admin_confirm"
+  get '/students/delete/:id', to: "students#destroy", as: "delete_student"
 end
 

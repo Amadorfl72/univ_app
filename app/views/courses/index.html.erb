@@ -1,15 +1,22 @@
-<div class="row finder-box">
-  <div class="col s-6">
-    <h4 class="center-align">Coming Worksessions</h4>
+<div class="row">
+  <div class="col s6">
+    <h4 class="left-aligned">Coming Worksessions</h4>
   </div>
-</div>
-  <div class="row finder-box ">
-  <div class="col s-6 right-aligned">
+  <div class="col s6 right-aligned">
     <%= form_tag search_courses_path, method: :get do %>
       <%= text_field_tag :search, params[:search],class: "finder" %>
       <%= submit_tag "Search" %>
-   <% end %>
-   </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col s6">
+  </div>
+  <div class="col s6 right-aligned">
+    <% if logged_in? && current_user.is_mentor? %>
+      <span class="right-aligned"> <%= link_to "+ ADD WORKSESSION", new_course_path %></span>
+    <% end %>
+  </div>
 </div>
 
 <div class="row">
@@ -40,7 +47,7 @@
               <span class="skill">#<%= keyword.lstrip %></span>
             <% end %>
            <% end %>
-        
+
       </div>
       <div class="card-action">
         <% if logged_in? %>
@@ -52,8 +59,8 @@
             <% end %>
           <%else%>
             <%= link_to "Leave Course", course_drop_path(course_id: course.id), method: :delete %>
-          <% end %>   
-        <% end %>  
+          <% end %>
+        <% end %>
         <%= link_to "Info", course_path(id: course.id)%>
       </div>
     </div>

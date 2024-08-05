@@ -5,7 +5,6 @@ class CoursesController < ApplicationController
 
   def index
     @courses=Course.all
-    puts "Entro en Index"
     #@courses=Course.where('session_date > ?', DateTime.now)
 
   end
@@ -59,7 +58,7 @@ class CoursesController < ApplicationController
   end
 
   def set_course
-    puts "Entro en before action"
+    #puts "Entro en before action"
     @course=Course.find(params[:id])
   end
 

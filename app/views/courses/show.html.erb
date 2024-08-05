@@ -13,17 +13,29 @@
           <%if @course.students.count>=@course.max_attendants%>
           (ALL SEATS BOOKED ALREADY!!)
           <% else %>
-          (<%=@course.students.count%> seats already taken)
+          (<%=@course.students.count%> seat/s already taken)
           <% end %>
         </p>
         <br>
-        <p>Keywords</p>
+        <p class="underline">Enroled teammates:
+            <% if @course.students.empty? %>
+              None
+            <% else %>
+            <ul>
+              <% @course.students.each do |student| %>
+              <li> - <%= link_to student.name, student_path(student) %></li>
+              <% end %>
+            </ul>
+            <%end %>
+          </p>
+        <br>
+        <p class="underline">Keywords</p>
         <% if !@course.keywords.nil? %>
             <%@course.keywords.split(",").each do |keyword| %>
               <span class="skill">#<%= keyword.lstrip %> </span>
             <% end %>
         <% end %>
-        <p>What is it about?</p>
+        <p class="underline">What is it about?</p>
         <p><i><%=@course.description %></i></p>
       </div>
       <div class="card-action">
